@@ -1,0 +1,287 @@
+:root {
+  color-scheme: dark;
+
+  --bg: #0f0f0f;
+  --surface: #101010;
+  --panel: #141414;
+  --panel-strong: #1c1c1c;
+  --line: #2a2a2a;
+
+  --text: #eaeaea;
+  --text-strong: #e5e5e5;
+  --muted: #7a7a7a;
+  --muted-strong: #a0a0a0;
+
+  --status-online: #5f7a61;
+  --status-offline: #3a3a3a;
+  --os-ink: #8a8a8a;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app {
+  height: 100%;
+  width: 100%;
+}
+
+.screen {
+  height: 100%;
+  width: 100%;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Connections */
+.connections {
+  width: min(960px, calc(100% - 48px));
+  margin: 120px auto 0;
+}
+
+.connections__header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.connections__title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.connections__subtitle {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.connections__list {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.connectionItem {
+  width: 100%;
+  height: 64px;
+  padding: 12px;
+  border: 0;
+  border-radius: 0;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.connectionItem:hover {
+  background: #121212;
+}
+
+.connectionItem:active {
+  background: #0d0d0d;
+}
+
+.connectionItem:focus-visible {
+  outline: 2px solid #2a2a2a;
+  outline-offset: 2px;
+}
+
+.osIcon {
+  width: 20px;
+  height: 20px;
+  background: var(--panel);
+  border-radius: 4px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.osLetter {
+  position: absolute;
+  left: 6px;
+  top: 3px;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--os-ink);
+}
+
+.connectionName {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-strong);
+}
+
+.connectionItem[data-status="offline"] .connectionName {
+  color: #6c6c6c;
+}
+
+.spacer {
+  flex: 1 1 auto;
+  height: 1px;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--status-offline);
+  flex: 0 0 auto;
+}
+
+.statusDot[data-status="online"] {
+  background: var(--status-online);
+}
+
+/* Session */
+.screen--session {
+  background: var(--bg);
+}
+
+.remoteSurface {
+  position: absolute;
+  inset: 0;
+  background: #101010;
+}
+
+.toolbar {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 40px;
+  padding: 12px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.toolbar__btn {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--muted-strong);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.toolbar__btn:hover {
+  color: #c8c8c8;
+}
+
+/* New Connection Modal */
+.screen--new {
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+}
+
+.modal {
+  width: min(520px, calc(100% - 48px));
+  height: 420px;
+  padding: 32px;
+  background: var(--panel);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.modal__title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field__label {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.field__input {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #e0e0e0;
+  font-size: 16px;
+  font-weight: 500;
+  outline: none;
+}
+
+.field__underline {
+  height: 1px;
+  width: 100%;
+  background: var(--line);
+}
+
+.field:focus-within .field__underline {
+  background: #3a3a3a;
+}
+
+.primaryButton {
+  width: 200px;
+  height: 40px;
+  border: 0;
+  border-radius: 4px;
+  padding: 0 16px;
+  background: var(--panel-strong);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.primaryButton:hover {
+  background: #242424;
+}
+
+.primaryButton:active {
+  background: #181818;
+}
