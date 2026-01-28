@@ -1,17 +1,24 @@
-export type View = "connections" | "session" | "new";
+export type Role = "host" | "client";
 
-export type ConnectionStatus = "online" | "offline";
-
-export type Connection = {
-  id: string;
-  name: string;
-  os: "M" | "W" | "L";
-  status: ConnectionStatus;
+export type PersistedSettings = {
+  signalingUrl: string;
+  room: string;
+  stunUrl: string;
+  useTurnFromSignaling: boolean;
 };
 
-export type NewConnectionDraft = {
-  name: string;
-  host: string;
-  user: string;
+export type ConnectionStatus =
+  | "idle"
+  | "starting"
+  | "connecting"
+  | "waiting_for_peer"
+  | "negotiating"
+  | "connected"
+  | "disconnected"
+  | "error";
+
+export type SessionError = {
+  message: string;
+  cause?: unknown;
 };
 

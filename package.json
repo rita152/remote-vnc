@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "signal": "cd src-tauri && cargo run --bin signaling_server",
     "tauri": "tauri"
   },
   "dependencies": {
